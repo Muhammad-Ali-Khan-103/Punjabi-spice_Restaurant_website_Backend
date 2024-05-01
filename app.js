@@ -10,17 +10,17 @@ const app = express();
 dotenv.config({ path: './config/config.env' });
 
 app.use(
-  cors(//
-    //{
-    // origin: [process.env.FRONTEND_URL],
-    // methods: ["POST"],
-    //credentials: true
+  cors(
+    {
+     origin: [process.env.FRONTEND_URL],
+     methods: ["POST","GET","PUT","DELETE"],
+     credentials: true
 
-    //  }
+      }
   )
 );
 
-dbConnection();
+
 
 app.use(express.json());// json krta hn form data k lia
 app.use(express.urlencoded({ extended: true })); // urlencoded krta hn file frontend recieve krnak lia
@@ -34,7 +34,7 @@ app.get("/", (req, res, next) => {
 })
 
 
-//dbConnection();
+dbConnection();
 
 
 app.use(errorMiddleware)
